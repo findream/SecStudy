@@ -1,0 +1,29 @@
+﻿生成启动时间为 2021/10/15 20:24:52。
+     1>项目“C:\Users\HaCky\Desktop\WMI_Monitor\MyDriver1\MyDriver1.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>StampInf:
+         C:\Program Files\Windows Kits\8.1\bin\x86\stampinf.exe -d "*" -a "x86" -v "*" -k "1.11" -u "1.11.0" -f Win7Debug\MyDriver1.inf 
+         Stamping Win7Debug\MyDriver1.inf [Version] section with DriverVer=10/15/2021,20.24.53.249
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IWin7Debug\ /Zi /nologo /W3 /WX- /Od /Oi /Oy- /D _X86_=1 /D i386=1 /D STD_CALL /D DEPRECATE_DDK_FUNCTIONS=1 /D MSC_NOOPT /D _WIN32_WINNT=0x0601 /D WINVER=0x0601 /D WINNT=1 /D NTDDI_VERSION=0x06010000 /D DBG=1 /GF /Gm- /Zp8 /GS- /Gy /fp:precise /Zc:wchar_t- /Zc:forScope- /GR- /Fo"Win7Debug\\" /Fd"Win7Debug\vc120.pdb" /Gz /wd4748 /wd4603 /wd4627 /wd4986 /wd4987 /wd4996 /FI"C:\Program Files\Windows Kits\8.1\Include\Shared\warning.h" /analyze- /errorReport:prompt /kernel -cbstring /d1import_no_registry /d2AllowCompatibleILVersions /d2Zi+ DriverEntry.c Hook.c
+         DriverEntry.c
+         Hook.c
+     1>Hook.c(87): warning C4047: “初始化”:“PPEB”与“ULONG”的间接级别不同
+     1>Hook.c(96): warning C4047: “初始化”:“PPEB_LDR_DATA”与“ULONG”的间接级别不同
+     1>Hook.c(155): warning C4047: “=”:“ULONG”与“PVOID”的间接级别不同
+     1>Hook.c(202): warning C4047: “=”:“ULONG”与“PVOID”的间接级别不同
+     1>Hook.c(233): warning C4022: “memcpy”: 指针与实参 1 不匹配
+         正在生成代码...
+       Link:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\HaCky\Desktop\WMI_Monitor\Win7Debug\MyDriver1.sys" /VERSION:"6.3" /INCREMENTAL:NO /NOLOGO /WX /SECTION:"INIT,d" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\memcmp.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\BufferOverflowK.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\ntoskrnl.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\hal.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\wmilib.lib" /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\HaCky\Desktop\WMI_Monitor\Win7Debug\MyDriver1.pdb" /SUBSYSTEM:NATIVE,"6.01" /Driver /OPT:REF /OPT:ICF /ENTRY:"GsDriverEntry@8" /RELEASE /IMPLIB:"C:\Users\HaCky\Desktop\WMI_Monitor\Win7Debug\MyDriver1.lib" /MERGE:"_TEXT=.text;_PAGE=PAGE" /MACHINE:X86 /PROFILE /kernel /IGNORE:4198,4010,4037,4039,4065,4070,4078,4087,4089,4221 /osversion:6.3 /pdbcompress /debugtype:pdata Win7Debug\DriverEntry.obj
+         Win7Debug\Hook.obj
+         MyDriver1.vcxproj -> C:\Users\HaCky\Desktop\WMI_Monitor\Win7Debug\MyDriver1.sys
+       DriverTestSign:
+         C:\Program Files\Windows Kits\8.1\bin\x86\signtool.exe sign /ph /sha1 "7B4CCA1FA39F3F2A704043734EC2DBF56C747DC6" 
+         Done Adding Additional Store
+         Successfully signed: C:\Users\HaCky\Desktop\WMI_Monitor\Win7Debug\MyDriver1.sys
+         
+     1>已完成生成项目“C:\Users\HaCky\Desktop\WMI_Monitor\MyDriver1\MyDriver1.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:06.52
