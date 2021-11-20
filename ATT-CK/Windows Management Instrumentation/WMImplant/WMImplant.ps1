@@ -1,9 +1,5 @@
-<#
-    WMImplant v1.0
-    License: GPLv3
-    Author: @ChrisTruncer
-#>
 #Import-Module ConnectWMI
+Import-Module .\WMI-EventSubscription.ps1
 function Edit-FileWMI
 {
     param
@@ -2884,7 +2880,13 @@ function Show-WMImplantMainMenu
     $menu_options += "====================================================================`n"
     $menu_options += "find_clsid - Find CLSID can be used`n"
     $menu_options += "set_com - Set Com Hiject`n"
-    $menu_options += "remote_createInstance - Remote creaetinstance`n"
+    $menu_options += "remote_createInstance - Remote creaetinstance`n`n"
+
+    $menu_options +="WMI Event WMI-EventSubscription`n"
+    $menu_options += "====================================================================`n"
+    $menu_options += "create_eventsub - Create WMI EventSubscription`n"
+    $menu_options += "show_eventsub - Show WMI EventSubscription`n"
+    $menu_options += "del_eventsub - Delter WMI EventSubscription`n"
 
     # Print the menu out to the user
     $menu_options
@@ -3372,6 +3374,41 @@ function Use-MenuSelection
                 else
                 {
                     Write-Host "Remote CreateInstance need Credential"
+                }
+            }
+
+            # WMI EventSubscription
+            "create_eventsub"
+            {
+            	if($Credential)
+                {
+                    WMI-EventSubscription -ComputerName $ComputerName -Credential $Credential
+                }
+                else
+                {
+                    Write-Host "Create WMI EventSubscription need Credential"
+                }
+            }
+            "show_eventsub"
+            {
+            	if($Credential)
+                {
+                    WMI-ShowEventSubscription -ComputerName $ComputerName -Credential $Credential
+                }
+                else
+                {
+                    Write-Host "Show WMI EventSubscription need Credential"
+                }
+            }
+            "del_eventsub"
+            {
+            	if($Credential)
+                {
+                    WMI-DelEventSubscription -ComputerName $ComputerName -Credential $Credential
+                }
+                else
+                {
+                    Write-Host "Delete WMI EventSubscription need Credential"
                 }
             }
             default
@@ -4141,7 +4178,7 @@ function Connect-WMI($ComputerName,$UserName,$Password)
 function ConnectWMI-violence
 {
     # $UserUsername = "corp\hacky"
-    # $UserPassword = "wxy.12345"
+    # $UserPassword = "12345"
     # $ChangedPassword = ConvertTo-SecureString $UserPassword -asplaintext -force 
     # $Credential = New-Object -Typename System.Management.Automation.PSCredential -argumentlist $UserUsername,$ChangedPassword
     Param($Credential)
@@ -4513,6 +4550,7 @@ function Set-ComHiject
     }
     
 }
+
 
 function test
 {
