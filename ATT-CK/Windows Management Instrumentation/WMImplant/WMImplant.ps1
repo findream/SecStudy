@@ -516,7 +516,7 @@ Path to save output to
 }
 
 # $UserUsername = "hacky-pc\hacky"
-# $UserPassword = "wxy.12345"
+# $UserPassword = "12345"
 # $ChangedPassword = ConvertTo-SecureString $UserPassword -asplaintext -force 
 # [System.Management.Automation.PSCredential]$Credential = New-Object -Typename System.Management.Automation.PSCredential -argumentlist $UserUsername,$ChangedPassword
 # Invoke-CommandExecution -Credential $Credential -ComputerName "192.168.80.11" -ExecCommand whoami
@@ -630,7 +630,7 @@ function Invoke-CommandExecution
 }
 
 # $UserUsername = "hacky-pc\hacky"
-# $UserPassword = "wxy.12345"
+# $UserPassword = "12345"
 # $ChangedPassword = ConvertTo-SecureString $UserPassword -asplaintext -force 
 # [System.Management.Automation.PSCredential]$Credential = New-Object -Typename System.Management.Automation.PSCredential -argumentlist $UserUsername,$ChangedPassword
 # Invoke-CommandExecution2 -Credential $Credential -ComputerName "192.168.80.11" -ExecCommand {ping baidu.com}
@@ -4555,7 +4555,7 @@ function Set-ComHiject
 function test
 {
 $UserUsername = "hacky-pc\Administrator"
-$UserPassword = "wxy.12345"
+$UserPassword = "12345"
 $ChangedPassword = ConvertTo-SecureString $UserPassword -asplaintext -force 
 $Credential = New-Object -Typename System.Management.Automation.PSCredential -argumentlist $UserUsername,$ChangedPassword
 $ComputerName = "192.168.237.129"
