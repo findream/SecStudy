@@ -1,0 +1,19 @@
+﻿生成启动时间为 2021/12/6 17:16:53。
+     1>项目“E:\SecStudy\Bypass UAC\ByPassUAC_Detect\ByPassUAC_DetectR3\ByPassUAC_DetectR3.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ByPassUAC_DetectR3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp workthread.cpp
+         workthread.cpp
+         main.cpp
+         正在生成代码...
+     1>e:\secstudy\bypass uac\bypassuac_detect\bypassuac_detectr3\workthread.cpp(505): warning C4172: 返回局部变量或临时变量的地址: lpFilePath
+     1>e:\secstudy\bypass uac\bypassuac_detect\bypassuac_detectr3\workthread.cpp(508): warning C4172: 返回局部变量或临时变量的地址: lpFilePath
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\SecStudy\Bypass UAC\ByPassUAC_Detect\Debug\ByPassUAC_DetectR3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\SecStudy\Bypass UAC\ByPassUAC_Detect\Debug\ByPassUAC_DetectR3.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\SecStudy\Bypass UAC\ByPassUAC_Detect\Debug\ByPassUAC_DetectR3.lib" /MACHINE:X86 Debug\main.obj
+         Debug\workthread.obj
+         ByPassUAC_DetectR3.vcxproj -> E:\SecStudy\Bypass UAC\ByPassUAC_Detect\Debug\ByPassUAC_DetectR3.exe
+     1>已完成生成项目“E:\SecStudy\Bypass UAC\ByPassUAC_Detect\ByPassUAC_DetectR3\ByPassUAC_DetectR3.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:06.00

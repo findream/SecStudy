@@ -1,0 +1,21 @@
+﻿生成启动时间为 2021/12/6 16:42:40。
+项目“C:\Users\HaCky\Desktop\ByPassUAC_Detect\ByPassUAC_Detect\ByPassUAC_Detect.vcxproj”在节点 2 上(Build 个目标)。
+StampInf:
+  C:\Program Files\Windows Kits\8.1\bin\x86\stampinf.exe -d "*" -a "x86" -v "*" -k "1.11" -u "1.11.0" -f Win7Debug\ByPassUAC_Detect.inf 
+  Stamping Win7Debug\ByPassUAC_Detect.inf [Version] section with DriverVer=12/06/2021,16.42.40.999
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IWin7Debug\ /Zi /nologo /W3 /WX- /Od /Oi /Oy- /D _X86_=1 /D i386=1 /D STD_CALL /D DEPRECATE_DDK_FUNCTIONS=1 /D MSC_NOOPT /D _WIN32_WINNT=0x0601 /D WINVER=0x0601 /D WINNT=1 /D NTDDI_VERSION=0x06010000 /D DBG=1 /GF /Gm- /Zp8 /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope- /GR- /Fo"Win7Debug\\" /Fd"Win7Debug\vc120.pdb" /Gz /wd4748 /wd4603 /wd4627 /wd4986 /wd4987 /wd4996 /FI"C:\Program Files\Windows Kits\8.1\Include\Shared\warning.h" /analyze- /errorReport:prompt /kernel -cbstring /d1import_no_registry /d2AllowCompatibleILVersions /d2Zi+ DriverEntry.c
+  DriverEntry.c
+Link:
+  C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\HaCky\Desktop\ByPassUAC_Detect\Win7Debug\ByPassUAC_Detect.sys" /VERSION:"6.3" /INCREMENTAL:NO /NOLOGO /WX /SECTION:"INIT,d" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\memcmp.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\BufferOverflowK.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\ntoskrnl.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\hal.lib" "C:\Program Files\Windows Kits\8.1\lib\win7\KM\x86\wmilib.lib" /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\HaCky\Desktop\ByPassUAC_Detect\Win7Debug\ByPassUAC_Detect.pdb" /SUBSYSTEM:NATIVE,"6.01" /Driver /OPT:REF /OPT:ICF /ENTRY:"GsDriverEntry@8" /RELEASE /IMPLIB:"C:\Users\HaCky\Desktop\ByPassUAC_Detect\Win7Debug\ByPassUAC_Detect.lib" /MERGE:"_TEXT=.text;_PAGE=PAGE" /MACHINE:X86 /PROFILE /INTEGRITYCHECK /kernel /IGNORE:4198,4010,4037,4039,4065,4070,4078,4087,4089,4221 /osversion:6.3 /pdbcompress /debugtype:pdata Win7Debug\DriverEntry.obj
+  ByPassUAC_Detect.vcxproj -> C:\Users\HaCky\Desktop\ByPassUAC_Detect\Win7Debug\ByPassUAC_Detect.sys
+DriverTestSign:
+  C:\Program Files\Windows Kits\8.1\bin\x86\signtool.exe sign /ph /sha1 "940D2F85A10B15EF3762E9787DA3F69F64ED6FA5" 
+  Done Adding Additional Store
+  Successfully signed: C:\Users\HaCky\Desktop\ByPassUAC_Detect\Win7Debug\ByPassUAC_Detect.sys
+  
+已完成生成项目“C:\Users\HaCky\Desktop\ByPassUAC_Detect\ByPassUAC_Detect\ByPassUAC_Detect.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.73
