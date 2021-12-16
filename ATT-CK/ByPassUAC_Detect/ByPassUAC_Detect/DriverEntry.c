@@ -20,9 +20,10 @@ void DriverUnload(PDRIVER_OBJECT pDriverObject)
 
 	IoDeleteDevice(pDriverObject->DeviceObject);
 	PsSetCreateProcessNotifyRoutineEx(pfnCreateProcessRoutine, TRUE);
+	//PsSetCreateProcessNotifyRoutine(pfnCreateProcessRoutine_X64, TRUE);
 }
 
-void pfnCreateProcessRoutine(
+VOID pfnCreateProcessRoutine(
 	PEPROCESS Process,
 	HANDLE ProcessId,
 	PPS_CREATE_NOTIFY_INFO CreateInfo
@@ -59,6 +60,52 @@ void pfnCreateProcessRoutine(
 		KeSetEvent(pDeviceExten->pkProcessEvent, 0, FALSE);
 		KeResetEvent(pDeviceExten->pkProcessEvent);
 	}
+}
+
+// 编程方式绕过签名检查
+BOOLEAN BypassCheckSign(PDRIVER_OBJECT pDriverObject)
+{
+#ifdef _WIN64
+	typedef struct _KLDR_DATA_TABLE_ENTRY
+	{
+		LIST_ENTRY listEntry;
+		ULONG64 __Undefined1;
+		ULONG64 __Undefined2;
+		ULONG64 __Undefined3;
+		ULONG64 NonPagedDebugInfo;
+		ULONG64 DllBase;
+		ULONG64 EntryPoint;
+		ULONG SizeOfImage;
+		UNICODE_STRING path;
+		UNICODE_STRING name;
+		ULONG   Flags;
+		USHORT  LoadCount;
+		USHORT  __Undefined5;
+		ULONG64 __Undefined6;
+		ULONG   CheckSum;
+		ULONG   __padding1;
+		ULONG   TimeDateStamp;
+		ULONG   __padding2;
+	} KLDR_DATA_TABLE_ENTRY, *PKLDR_DATA_TABLE_ENTRY;
+#else
+	typedef struct _KLDR_DATA_TABLE_ENTRY
+	{
+		LIST_ENTRY listEntry;
+		ULONG unknown1;
+		ULONG unknown2;
+		ULONG unknown3;
+		ULONG unknown4;
+		ULONG unknown5;
+		ULONG unknown6;
+		ULONG unknown7;
+		UNICODE_STRING path;
+		UNICODE_STRING name;
+		ULONG   Flags;
+	} KLDR_DATA_TABLE_ENTRY, *PKLDR_DATA_TABLE_ENTRY;
+#endif
+	PKLDR_DATA_TABLE_ENTRY pLdrData = (PKLDR_DATA_TABLE_ENTRY)pDriverObject->DriverSection;
+	pLdrData->Flags = pLdrData->Flags | 0x20;
+	return TRUE;
 }
 
 NTSTATUS DisPatchComd(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
@@ -118,11 +165,13 @@ NTSTATUS SendToR3(PDEVICE_OBJECT pDeviceObject, PIRP pIrp)
 
 NTSTATUS DriverEntry(PDRIVER_OBJECT  pDriverObject, PUNICODE_STRING RegistryPath)
 {
+
 	//推出
 	pDriverObject->DriverUnload = DriverUnload;
+	NTSTATUS ntStatus = STATUS_SUCCESS;
+	BypassCheckSign(pDriverObject);
 
 	// 创建设备对象
-	NTSTATUS ntStatus = STATUS_SUCCESS;
 	UNICODE_STRING  DeviceObjectName = { 0 };
 	PDEVICE_OBJECT  pDeviceObject = NULL;
 	ntStatus = RtlUnicodeStringInit(&DeviceObjectName, DEVICE_OBJECT_NAME);
@@ -183,6 +232,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT  pDriverObject, PUNICODE_STRING RegistryPath
 
 	//设置进程回调
 	ntStatus = PsSetCreateProcessNotifyRoutineEx(pfnCreateProcessRoutine, FALSE); //FASLE为注册
+	//ntStatus = PsSetCreateProcessNotifyRoutine(pfnCreateProcessRoutine_X64, FALSE); //FASLE为注册
 	if (!NT_SUCCESS(ntStatus))
 	{
 		DbgPrint("PsSetCreateProcessNotifyRoutine :%d", ntStatus);
@@ -203,3 +253,4 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT  pDriverObject, PUNICODE_STRING RegistryPath
 
 	return ntStatus;
 }
+
