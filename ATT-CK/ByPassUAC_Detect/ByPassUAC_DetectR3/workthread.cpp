@@ -466,16 +466,11 @@ BOOL CheckExeSignature(DWORD dwPid)
 	return bResult;
 }
 //判断父进程的合法性
-BOOL IsParentProcessLegitimacy(DWORD dwPid,DWORD *dwParentPid)
+BOOL IsParentProcessLegitimacy(DWORD dwPid,DWORD dwParentPid)
 {
 	BOOL bResult = FALSE;
-	DWORD dwParentId = -1;
+	DWORD dwParentId = dwParentPid;
 
-	//获取父进程Pid
-	if (GetParentProcessId(dwPid, &dwParentId) == TRUE && (dwParentId == -1))
-	{
-		return bResult;
-	}
 
 	//获取父进程的文件路径
 	TCHAR lpFilePath[MAX_PATH] = {0};
@@ -489,7 +484,6 @@ BOOL IsParentProcessLegitimacy(DWORD dwPid,DWORD *dwParentPid)
 	{
 		bResult = TRUE;
 	}
-	*dwParentPid = dwParentId;
 	return bResult;
 }
 
@@ -515,11 +509,11 @@ BOOL WorkThread(PVOID _ProcessInfo)
 	TCHAR ParentProcessName[MAX_PATH] = { 0 };
 
 	DWORD dwPid = (DWORD)ProcessInfo->hProcessId;
-	DWORD dwParentPid = 0;
+	DWORD dwParentPid = (DWORD)ProcessInfo->hParentId;
 	strcpy(ProcessName, &ProcessInfo->szProcessName[4]);
 	strcpy(ParentProcessName, ProcessInfo->szParentProcessName);
 	
-	//printf("%s ----> %s \t\n", ParentProcessName, ProcessName);
+	printf("%s ----> %s \t\n", ParentProcessName, ProcessName);
 
 	BOOL bIsAdmin = FALSE;
 	TOKEN_ELEVATION_TYPE  ElevationType;
@@ -529,7 +523,7 @@ BOOL WorkThread(PVOID _ProcessInfo)
 	{
 		//第二步:进程文件是否存在数字签名
 		//第三步:检查父进程合法性
-		if (CheckExeSignature(dwPid) == FALSE && IsParentProcessLegitimacy(dwPid, &dwParentPid) == TRUE)
+		if (CheckExeSignature(dwPid) == FALSE && IsParentProcessLegitimacy(dwPid, dwParentPid) == TRUE)
 		{
 			printf("[*]detect ByPass UAC: %s [%d] =======> %s[%d] \t\n", ParentProcessName, dwParentPid, ProcessName, dwPid);
 		}
