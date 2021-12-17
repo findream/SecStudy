@@ -1,4 +1,4 @@
-#include <windows.h>
+Ôªø#include <windows.h>
 #include <stdio.h>
 #include <winnt.h>
 #include <Shlobj.h>
@@ -18,8 +18,18 @@
 #include <memory>
 #include <tlhelp32.h>
 #pragma comment(lib, "WinTrust.Lib")
-#pragma comment(lib, "Crypt32.Lib")
+#ifdef _WIN64
+
+#pragma comment(lib, "ShLwApi_x64.Lib")
+
+#elif
+
 #pragma comment(lib, "ShLwApi.Lib")
+
+#endif // _WIN64
+
+#pragma comment(lib, "Crypt32.Lib")
+
 #pragma warning(disable:4996)
 
 typedef enum _PROCESSINFOCLASS {
@@ -103,10 +113,10 @@ typedef struct _PROCESS_BASIC_INFORMATION {
 
 typedef struct _PROCESS_LONNK_READDATA
 {
-	HANDLE hProcessId;              //Ω¯≥ÃµƒPID
-	TCHAR szProcessName[MAX_PATH];   //Ω¯≥Ã√˚
-	HANDLE hParentId;                //∏∏Ω¯≥ÃPID
-	TCHAR szParentProcessName[MAX_PATH]; //∏∏Ω¯≥ÃΩ¯≥Ã√˚
+	HANDLE hProcessId;              //ÏèµÎÑãÎè®PID
+	TCHAR szProcessName[MAX_PATH];   //ÏèµÎÑãÏ∏∞
+	HANDLE hParentId;                //ÎßåÏèµÎÑãPID
+	TCHAR szParentProcessName[MAX_PATH]; //ÎßåÏèµÎÑãÏèµÎÑãÏ∏∞
 }PROCESS_LONNK_READDATA, *PPROCESS_LONNK_READDATA;
 
 
@@ -121,6 +131,3 @@ typedef NTSTATUS(WINAPI *pfnNtQueryInformationProcess) (
 BOOL WorkThread(PVOID ProcessInfo);
 BOOL EnablePrivilege(HANDLE hToken, LPCSTR szPrivName);
 PCHAR GetProcessNameByPid(DWORD dwPid);
-
-
-
