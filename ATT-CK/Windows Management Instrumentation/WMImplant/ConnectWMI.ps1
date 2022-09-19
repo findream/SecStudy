@@ -172,7 +172,7 @@ function Connect-WMI($ComputerName,$UserName,$Password)
 function ConnectWMI-violence
 {
     # $UserUsername = "corp\hacky"
-    # $UserPassword = "wxy.12345"
+    # $UserPassword = "12345"
     # $ChangedPassword = ConvertTo-SecureString $UserPassword -asplaintext -force 
     # $Credential = New-Object -Typename System.Management.Automation.PSCredential -argumentlist $UserUsername,$ChangedPassword
     Param($Credential)

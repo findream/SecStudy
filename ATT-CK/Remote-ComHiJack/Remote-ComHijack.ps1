@@ -324,7 +324,7 @@ function Set-ComHiject
 function Find-CLSID
 {
     #$UserUsername = "hacky-pc\Administrator"
-    #$UserPassword = "wxy.12345"
+    #$UserPassword = "12345"
     #$ComputerName = "192.168.237.129"
     $UserUsername = Read-Host "Input domain/username > "
     $UserPassword = Read-Host "Input password > "
