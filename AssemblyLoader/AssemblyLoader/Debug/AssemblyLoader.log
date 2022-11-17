@@ -1,0 +1,16 @@
+﻿生成启动时间为 2022/10/23 14:42:20。
+     1>项目“C:\Users\Administrator\Desktop\AssemblyLoader\AssemblyLoader\AssemblyLoader.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"E:\Software\vcpkg-master\installed\x86-windows\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AssemblyLoader.cpp
+         AssemblyLoader.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\Software\vcpkg-master\installed\x86-windows\debug\lib" /LIBPATH:"E:\Software\vcpkg-master\installed\x86-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "E:\Software\vcpkg-master\installed\x86-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.lib" /MACHINE:X86 Debug\AssemblyLoader.obj
+         AssemblyLoader.vcxproj -> C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.exe
+       AppLocalFromInstalled:
+         pwsh.exe -ExecutionPolicy Bypass -noprofile -File "E:\Software\vcpkg-master\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.exe" "E:\Software\vcpkg-master\installed\x86-windows\debug\bin" "Debug\AssemblyLoader.tlog\AssemblyLoader.write.1u.tlog" "Debug\vcpkg.applocal.log"
+         "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "E:\Software\vcpkg-master\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\Administrator\Desktop\AssemblyLoader\Debug\AssemblyLoader.exe" "E:\Software\vcpkg-master\installed\x86-windows\debug\bin" "Debug\AssemblyLoader.tlog\AssemblyLoader.write.1u.tlog" "Debug\vcpkg.applocal.log"
+     1>已完成生成项目“C:\Users\Administrator\Desktop\AssemblyLoader\AssemblyLoader\AssemblyLoader.vcxproj”(Rebuild 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:02.60

